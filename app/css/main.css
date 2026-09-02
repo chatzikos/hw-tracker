@@ -1,0 +1,106 @@
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@100..900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&display=swap');
+@import url("https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.3.1/css/all.min.css");
+@import "tailwindcss";
+
+
+
+@theme {
+    /* --color-primary: #02c992; */
+    --color-primary: #4F8CFF;
+    --color-tertiary: #B07300;
+
+    --font-sans: 'Outfit', sans-serif;
+    --font-serif: 'Instrument Serif', serif;
+}
+
+@layer base {
+    html {
+        font-size: 1rem;
+    }
+
+    body { 
+        background: var(--color-neutral-900);   
+        color: var(--color-neutral-200);
+        width: 100%;
+        scroll-behavior: smooth;
+        overflow-x: hidden;
+    }
+}
+
+@layer utilities {
+    .font-serif {
+        font-family: var(--font-serif);
+        font-style: italic;
+    }
+
+    .text-faded {
+        color: var(--color-neutral-300);
+    }
+
+    .text-highlight{
+        @apply bg-[var(--color-tertiary)] px-2.5;
+    }   
+}
+
+@utility abs-center {
+    @apply absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2;
+}
+
+@utility flex-center {
+    @apply flex justify-center items-center;
+}
+
+@layer components {
+    button, .btn {
+        @apply rounded-lg inline-block w-fit bg-primary text-white p-2 px-4 transition duration-200 hover:-translate-y-0.5;
+    }
+
+    .hero{
+        @apply w-full max-w-[1000px] md:w-[1000px] abs-center;
+        
+        #title {
+            @apply mb-6;
+        }
+
+        #buttons {
+            @apply flex items-center gap-1.5 mb-4;
+        }
+    }
+
+    .dashboard{
+        @apply min-h-screen md:grid md:grid-rows-[60px_1fr] md:grid-cols-[240px_1fr];
+
+        header{
+            @apply p-4 flex items-center col-span-2 border-b border-neutral-800;
+
+            span{
+                @apply w-full text-white text-center;
+            }
+        }
+
+        aside{
+            @apply border-r border-neutral-800 p-5;
+
+            ul{
+                @apply flex flex-col gap-1;
+            }
+
+            li a{
+                @apply block border border-neutral-800 px-3 py-2 rounded transition hover:text-white;
+            }
+
+            /* ul li a {
+                @apply transition hover:text-white;
+            } */
+        }
+
+        main{
+            @apply p-10;
+
+            .title{
+                @apply text-3xl font-bold;
+            }
+        }
+    }
+}
