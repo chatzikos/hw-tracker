@@ -1,0 +1,20 @@
+<div class="flex items-center justify-between">
+    <h1 class="title">Subjects</h1>
+    <a href="#add-subject" class="btn btn-secondary">Add Subject</a>
+</div>
+
+<div class="items-grid">
+    <template x-data x-for="subject in $store.subjects" :key="subject.subjectName">
+        <div class="item">
+            <div class="item-info">
+                <span x-text="subject.subjectName"></span>
+                <p></p>
+            </div>
+            <div class="item-actions">
+                <a href="#">Edit</a> 
+                <span>▪</span>
+                <a href="#">Remove</a>
+            </div>
+        </div>
+    </template>
+</div>

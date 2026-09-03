@@ -17,5 +17,13 @@ export const router = {
 
         document.querySelector('#title').innerText = page.title;
         document.querySelector('#app').innerHTML = html;
+
+        if(typeof(page.onload) === "function") {
+            await page.onload();
+        }
     }
 };
+
+export const redirect = (route) => {
+    window.location.hash = route;
+}
