@@ -7,5 +7,17 @@
         <input type="text" id="subjectName" name="subjectName" placeholder="e.g Maths">
     </div>
 
+    <div class="input">
+        <label>Days of the week</label>
+        <div class="checkbox-grid">
+            <template x-data x-for="(day, index) in $store.days" :key="index">
+                <label class="checkbox">
+                    <input type="checkbox" name="subjectDays" :value="index">
+                    <span x-text="day"></span>
+                </label> 
+            </template>
+        </div>
+    </div>
+
     <button class="btn btn-secondary" type="submit">Add subject</button>
 </form>

@@ -3,12 +3,12 @@
     <a href="#add-subject" class="btn btn-secondary">Add Subject</a>
 </div>
 
-<div class="items-grid">
-    <template x-data x-for="subject in $store.subjects" :key="subject.subjectName">
+<div class="items-grid" x-data="subjects">
+    <template x-for="(subject, index) in subjects" :key="subject.subjectName">
         <div class="item">
             <div class="item-info">
                 <span x-text="subject.subjectName"></span>
-                <p></p>
+                <p x-text="frequency(subject)"></p>
             </div>
             <div class="item-actions">
                 <a href="#">Edit</a> 
@@ -17,4 +17,12 @@
             </div>
         </div>
     </template>
+    
+    <div x-show="!subjects.length" class="empty-state"> 
+        <h2>No subjects yet</h2>
+        <p class="mb-3">Add your first subject to get started.</p>
+        <a href="#add-subject" class="btn btn-secondary text-sm">
+            Add Subject
+        </a>
+    </div>
 </div>
