@@ -1,0 +1,40 @@
+import { PRIORITIES } from '../constants.js';
+import { storage } from "../storage.js";
+
+
+export const tasks = () => {
+    Alpine.data('tasks', () => ({
+        get tasks() {
+            return storage.get('tasks').reverse();
+        },
+        modal(task) {
+            const modal = document.querySelector('#task-info-popup');
+            modal.showModal();
+
+            Object.entries(task).forEach(([key, value]) => {
+                const el = modal.querySelector(`#${key}`);
+                if(el){
+                    el.innerText = value;
+                }
+            });
+
+            document.querySelector('#taskName').innerText = task.taskName;
+        },
+        subject(task){
+            return storage.get('subjects')[task.taskSubject].subjectName;
+        },
+        priority(task){
+            return PRIORITIES[task.taskPriority];
+        },
+        priorityColor(task){
+            const priority = task.taskPriority;
+            return priority == 0 ? 'text-priority-low' : priority == 1 ? 'text-priority-medium' : 'text-priority-high'; 
+        },
+        deadline(task){
+            return new Intl.DateTimeFormat('en', {
+                dateStyle: 'medium',
+                timeStyle: 'short' 
+            }).format(new Date(task.taskDeadline));
+        }
+    }));
+}

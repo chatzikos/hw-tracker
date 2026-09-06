@@ -13,6 +13,11 @@
 }
 
 @layer base {
+
+    *{
+        outline: transparent;
+    }
+
     html {
         font-size: 1rem;
     }
@@ -49,9 +54,37 @@
 }
 
 @layer components {
-    
+    dialog{
+        @apply rounded-xl abs-center p-8 bg-neutral-900 border-neutral-800 text-neutral-200 w-100 h-60;
+    }
+
     button, .btn {
         @apply rounded-lg inline-block w-fit bg-primary text-white p-2 px-4;
+    }
+
+    .badge{
+        @apply text-sm p-1.5 px-3 cursor-pointer rounded-lg border border-neutral-800;
+    }
+
+    .badge-incomplete{
+        @apply text-red-500 font-bold;
+    }
+
+
+    .badge-complete{
+        @apply text-green-500 font-bold;
+    }
+
+    .text-priority-low{
+        @apply text-blue-500;
+    }
+
+    .text-priority-medium{
+        @apply text-orange-400;
+    }
+
+    .text-priority-high{
+        @apply text-red-500;
     }
 
 
@@ -75,8 +108,16 @@
         }
     }
 
-    input, .checkbox{
+    .input-group{
+        @apply grid grid-cols-2 gap-3;
+    }
+
+    input, select, .checkbox{
         @apply p-2 px-3 border border-neutral-800 rounded-lg;
+    }
+
+    select option{
+        @apply bg-neutral-900;
     }
 
     .hero{
@@ -123,6 +164,14 @@
 
             .table{
                 @apply w-full;
+
+                th span{
+                    @apply flex gap-2 items-center;
+
+                    svg{
+                        @apply w-5;
+                    }
+                }
             }
             
             .table,

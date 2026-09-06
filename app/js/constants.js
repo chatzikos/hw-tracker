@@ -7,3 +7,9 @@ export const DAYS = [
     'Saturday',
     'Sunday'
 ];
+
+export const PRIORITIES = [
+    'Low',
+    'Medium',
+    'High'
+];

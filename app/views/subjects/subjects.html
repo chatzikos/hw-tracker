@@ -4,7 +4,7 @@
 </div>
 
 <div class="items-grid" x-data="subjects">
-    <template x-for="(subject, index) in subjects" :key="subject.subjectName">
+    <template x-for="(subject, index) in subjects" :key="index">
         <div class="item">
             <div class="item-info">
                 <span x-text="subject.subjectName"></span>

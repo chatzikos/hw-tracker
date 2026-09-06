@@ -6,7 +6,8 @@ export const subjects = () => {
             return storage.get('subjects');
         },
         frequency(subject) {
-            return `${subject.subjectDays.length} times this week`;
+            const days = subject.subjectDays.length;
+            return days !== 1 ? `${days} times this week` : `1 time this week`;
         },
     }));
 }

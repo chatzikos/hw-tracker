@@ -1,6 +1,7 @@
-import { tasks } from '../pages/tasks.js';
-import { addSubject } from '../pages/addSubject.js';
-import { subjects } from '../pages/subjects.js';
+import { tasks } from '../controllers/tasks.js';
+import { addTask } from '../controllers/addTask.js';
+import { subjects } from '../controllers/subjects.js';
+import { addSubject } from '../controllers/addSubject.js';  
 
 export const routes = {
     '#notFound': {
@@ -12,9 +13,14 @@ export const routes = {
         title: 'Overview',
     },
     '#tasks': {
-        file: 'tasks.html',
+        file: 'tasks/tasks.html',
         title: 'Tasks',
         onload: tasks
+    },
+    '#add-task': {
+        file: 'tasks/add-task.html',
+        title: 'Add Task',
+        onload: addTask
     },
     '#calendar': {
         file: 'calendar.html',
